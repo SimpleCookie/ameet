@@ -2,7 +2,7 @@ import fastify from 'fastify'
 
 const server = fastify()
 
-server.get('/ping', async (request, reply) => {
+server.get('/ping', async (_request, _reply) => {
   return 'pong\n'
 })
 
