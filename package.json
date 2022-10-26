@@ -9,9 +9,7 @@
     "run": "tsc && node dist/index.js"
   },
   "dependencies": {
-    "apollo-server-fastify": "3.10.3",
-    "fastify": "4.9.2",
-    "graphql": "16.6.0"
+    "fastify": "4.9.2"
   },
   "devDependencies": {
     "@tsconfig/node18-strictest-esm": "1.0.1",
