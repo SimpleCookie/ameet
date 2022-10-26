@@ -1,3 +1,5 @@
+import type { Database } from "./model"
+
 export const database: Database = {
   users: [
     {
@@ -18,17 +20,3 @@ export const database: Database = {
     },
   ]
 }
-
-interface Database {
-  users: User[]
-}
-
-interface User {
-  alias: string
-  ssn: string
-  location: string
-  age: number
-  gender: Gender
-  lookingFor: Gender[]
-}
-type Gender = "M" | "F"
