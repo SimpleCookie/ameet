@@ -1,8 +1,7 @@
 import fastify from "fastify"
-import { ApolloServer, BaseContext } from "@apollo/server"
+import { ApolloServer } from "@apollo/server"
 import fastifyApollo, {
   fastifyApolloDrainPlugin,
-  fastifyApolloHandler,
 } from "@as-integrations/fastify"
 // import compress from "@fastify/compress"
 import cors from "@fastify/cors"
