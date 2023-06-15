@@ -25,9 +25,9 @@ const main = async () => {
     return "pong\n"
   })
 
-  // await server.register(rateLimit)
-  // await server.register(helmet)
-  // await server.register(cors)
+  await server.register(rateLimit)
+  await server.register(helmet)
+  await server.register(cors)
   // await server.register(compress)
   await server.register(fastifyApollo(apollo), {
     context: cookieContext,
