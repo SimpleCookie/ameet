@@ -1,10 +1,14 @@
-import { CookieContext } from "../context"
+import { CookieContext } from "./context"
 import { repository } from "../database/repository"
 
 export const graphQLResolvers = {
   Query: {
-    users: (_parent: any, _args: any, context: CookieContext, _info: any) =>
-      auth(context) && repository.findAllUsers(),
+    users: (_parent: any, _args: any, context: CookieContext, _info: any) => {
+      if (!auth(context)) {
+        throw new Error("Not authorized")
+      }
+      return repository.findAllUsers()
+    },
   },
 }
 

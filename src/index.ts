@@ -10,7 +10,7 @@ import helmet from "@fastify/helmet"
 import rateLimit from "@fastify/rate-limit"
 import { graphQLTypeDefs } from "./graphql/schema"
 import { graphQLResolvers } from "./graphql/resolvers"
-import { cookieContext, CookieContext } from "./context"
+import { cookieContext, CookieContext } from "./graphql/context"
 
 const main = async () => {
   const server = fastify({ logger: true })
@@ -20,14 +20,6 @@ const main = async () => {
     plugins: [fastifyApolloDrainPlugin(server)],
   })
   await apollo.start()
-
-  // server.route({
-  //   url: "/graphql",
-  //   method: ["POST", "OPTIONS"],
-  //   handler: fastifyApolloHandler(apollo, {
-  //     context: cookieContext,
-  //   }),
-  // })
 
   server.get("/", async (_request: any, _reply: any) => {
     return "pong\n"
