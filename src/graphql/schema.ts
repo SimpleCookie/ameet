@@ -1,11 +1,12 @@
 export const graphQLTypeDefs = `#graphql
   type User {
-    alias: String
+    id: String!
+    alias: String!
+    location: String!
+    age: Int!
+    gender: Gender!
+    lookingFor: [Gender!]!
     ssn: String
-    location: String
-    age: Int
-    gender: Gender
-    lookingFor: [Gender]
   }
 
   enum Gender {
@@ -14,7 +15,23 @@ export const graphQLTypeDefs = `#graphql
   }
 
   type Query {
-    users: [User]
-    user(alias: String): User
+    users(filter: UserFilterInput): [User]
+  }
+
+  input UserFilterInput {
+    age: IntervalQueryOperatorInput
+    alias: StringQueryOperatorInput
+    id: StringQueryOperatorInput
+    gender: Gender
+  }
+
+  input StringQueryOperatorInput {
+    eq: String
+    in: String
+  }
+
+  input IntervalQueryOperatorInput {
+    min: Int!
+    max: Int!
   }
 `

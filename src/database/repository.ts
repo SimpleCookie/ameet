@@ -1,5 +1,12 @@
 import { database } from "."
-import type { User } from "./model"
+import type { UUID, User } from "./model"
+
+interface Repository {
+  findAllUsers: () => User[]
+  findUserByAge: (ageLow: number, ageHigh: number) => User[]
+  findUserByAlias: (alias: string) => User | undefined
+  findUserById: (id: UUID) => User | undefined
+}
 
 export const repository: Repository = {
   findAllUsers: () => {
@@ -12,10 +19,7 @@ export const repository: Repository = {
     const tmp = alias.toLocaleLowerCase()
     return database.users.find((u) => u.alias.toLocaleLowerCase() === tmp)
   },
-}
-
-interface Repository {
-  findAllUsers: () => User[]
-  findUserByAge: (ageLow: number, ageHigh: number) => User[]
-  findUserByAlias: (alias: string) => User | undefined
+  findUserById: (id: UUID) => {
+    return database.users.find((u) => u.id === id)
+  },
 }

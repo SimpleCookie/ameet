@@ -26,7 +26,7 @@ const main = async () => {
   })
 
   await server.register(rateLimit)
-  await server.register(helmet)
+  // await server.register(helmet)
   await server.register(cors)
   // await server.register(compress)
   await server.register(fastifyApollo(apollo), {
